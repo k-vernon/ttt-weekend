@@ -24,13 +24,18 @@ console.log(messageEl);
 
 /*-------------------------------- Functions --------------------------------*/
 function init(){
+    let board = [null, null, null, null, null, null, null, null, null]
+    let turn = 1
+    let winner = false
+    let tie = false
     render()
     console.log(init)
 }
 init()
 
 function render(){
-
+    updateBoard()
+    updateMessage()
 }
 
 function updateBoard(){
@@ -42,10 +47,22 @@ function updateBoard(){
         } else {
             squareEls[idx].textContent = ""
         }
-        
-        console.log(square)
     })
 }
-updateBoard()
 
-//
+
+
+function updateMessage(){
+    if (winner === false && tie === false){
+       messageEl.textContent = `It's ${turn}'s turn!`
+    } else if (winner === false && tie === true){
+       messageEl.textContent = `It's a tie!`
+    } else {
+       messageEl.textContent = `The winner is ${turn}!`
+    }
+}
+
+
+
+
+
