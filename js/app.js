@@ -76,20 +76,18 @@ function updateMessage(){
 }
 
 
-let boardEl = document.getElementById("board")
-
 squareEls.forEach(function(tile){
     tile.addEventListener("click", handleClick)
 })
 
-
 function handleClick (evt){
-        console.log("Clicked in box")
-        console.log(evt.target)
-    // let sqIdx = squareEls.indexOf(evt.target)
-    const sqIdx = Array.from(squareEls.parentElement.children).indexOf(squareEls)
+    console.log("Clicked in box")
+    console.log(evt.target)
+    const sqIdx = Array.prototype.indexOf.call((evt.target.parentElement).children, evt.target)
     console.log(sqIdx)
 }
+
+
 
 
 
