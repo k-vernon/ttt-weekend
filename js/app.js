@@ -4,35 +4,37 @@
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board = [null, null, null, null, null, null, null, null, null]
-console.log(board);
 let turn = 1
-console.log(turn);
 let winner = false
-console.log(winner);
 let tie = false
-console.log(tie);
 const winningCombos = [
   // Horizonal Combos
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
+  [0, 1, 2], //0            [1, 1, 1, 0, 0, 0, 0, 0, 0]      
+  [3, 4, 5], //1            [0, 0, 0, 1, 1, 1, 0, 0, 0]
+  [6, 7, 8], //2            [0, 0, 0, 0, 0, 0, 1, 1, 1]
   // Vertical Combos
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
+  [0, 3, 6], //3            [1, 0, 0, 1, 0, 0, 1, 0, 0]
+  [1, 4, 7], //4            [0, 1, 0, 0, 1, 0, 0, 1, 0]
+  [2, 5, 8], //5            [0, 0, 1, 0, 0, 1, 0, 0, 1]
   // Diagonal Combos
-  [0, 4, 8],
-  [2, 4, 6],
+  [0, 4, 8], //6            [1, 0, 0, 0, 1, 0, 0, 0, 1]
+  [2, 4, 6], //7            [0, 0, 1, 0, 1, 0, 1, 0, 0]
 ]
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(".sqr")
-console.log(squareEls)
+// console.log(squareEls)
 const messageEl = document.getElementById("message")
-console.log(messageEl);
+// console.log(messageEl);
+const resetBtnEl = document.getElementById("resetButton")
+// console.log(resetBtnEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
+squareEls.forEach(function(tile){
+    tile.addEventListener("click", handleClick)
+})
 
+resetBtnEl.addEventListener("click", init)
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -41,14 +43,15 @@ function init(){
     let turn = 1
     let winner = false
     let tie = false
+    console.log("New game initiated.")
     render()
-    console.log(init)
 }
 init()
 
 function render(){
     updateBoard()
     updateMessage()
+ 
 }
 
 function updateBoard(){
@@ -76,15 +79,58 @@ function updateMessage(){
 }
 
 
-squareEls.forEach(function(tile){
-    tile.addEventListener("click", handleClick)
-})
-
 function handleClick (evt){
-    console.log("Clicked in box")
-    console.log(evt.target)
-    const sqIdx = Array.prototype.indexOf.call((evt.target.parentElement).children, evt.target)
+    // const sqIdx = Array.prototype.indexOf.call((evt.target.parentElement).children, evt.target)
+    const sqIdx = evt.target.id.slice(2)
     console.log(sqIdx)
+    if(board[sqIdx] !== null){
+        return
+    } else if (winner === true){
+        return
+    }
+    board[sqIdx] = turn
+    console.log(board)
+    placePiece(sqIdx)
+    checkForTie()
+    checkForWinner()
+    switchPlayerTurn()
+    render()
+}
+
+function placePiece (idx){
+    board[idx] = turn
+    console.log("Turn", turn)
+}
+
+
+function checkForTie (){
+   let checkNulls = board.every(function(i){
+        return i === -1 || i === 1 
+    })
+    console.log("Tie? There are no more moves to make:", checkNulls)  
+} 
+  
+
+// board = [ null, 1, 1 , -1, null, 1, -1, -1, -1]
+function checkForWinner (){
+    winningCombos.forEach(function(eachArr){
+        let sum = 0
+        eachArr.forEach(function(sqr){
+            sum = sum + board[sqr]
+        })
+        // if(Math.abs(sum) === 3) 
+        if(sum === 3 || sum === -3){
+            winner = true
+        }
+        console.log("Winner", winner)
+    })
+} 
+
+function switchPlayerTurn(){
+    if (winner === true){
+        return
+    }
+    turn = turn * -1
 }
 
 
