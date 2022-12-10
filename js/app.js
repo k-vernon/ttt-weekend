@@ -82,14 +82,14 @@ function updateMessage(){
 function handleClick (evt){
     // const sqIdx = Array.prototype.indexOf.call((evt.target.parentElement).children, evt.target)
     const sqIdx = evt.target.id.slice(2)
-    console.log(sqIdx)
+    console.log("Square Index Clicked:", sqIdx)
     if(board[sqIdx] !== null){
         return
     } else if (winner === true){
         return
     }
     board[sqIdx] = turn
-    console.log(board)
+    console.log("Updated Board:", board)
     placePiece(sqIdx)
     checkForTie()
     checkForWinner()
@@ -99,7 +99,7 @@ function handleClick (evt){
 
 function placePiece (idx){
     board[idx] = turn
-    console.log("Turn", turn)
+    console.log("Turn:", turn)
 }
 
 
@@ -111,7 +111,6 @@ function checkForTie (){
 } 
   
 
-// board = [ null, 1, 1 , -1, null, 1, -1, -1, -1]
 function checkForWinner (){
     winningCombos.forEach(function(eachArr){
         let sum = 0
@@ -122,7 +121,7 @@ function checkForWinner (){
         if(sum === 3 || sum === -3){
             winner = true
         }
-        console.log("Winner", winner)
+        console.log("Winner:", winner)
     })
 } 
 
@@ -132,6 +131,8 @@ function switchPlayerTurn(){
     }
     turn = turn * -1
 }
+
+
 
 
 

@@ -1,24 +1,69 @@
 body {
-    background-color: gray;
+    background-color: rgb(194, 211, 211);
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	margin: 0;
+	margin: 0px 0px 100px 0px;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  color:rgb(102, 69, 69)
+}
+
+h1 {
+  font-size: 50px;
+  padding: 50px -40px;
+}
+
+h2 {
+  background-color: #ebebeb7c;
+  width: 200px;
+  position: relative;
+  text-align: center;
+  margin: 20px auto 0px auto;
+  padding: 10px 16px;
+  border-radius: 10px;
 }
 
 section.board {
   display: grid;
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
-  grid-gap: 0vmin;
+  grid-gap: 1vmin;
+  margin: 20px auto 0px auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  padding: 10px 10px;
 }
 
 div {
-  border: 3px solid black;
+  border: 3px solid rgb(194, 211, 211);
+  background-color: rgb(196, 196, 196);
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  
+}
+
+
+
+#resetButton{
+  background-color: rgb(102, 69, 69);
+  border-radius: 70px;
+  border-style: none;
+  color: #ffffffc6;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  margin: 20px auto 0px auto;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
 }
