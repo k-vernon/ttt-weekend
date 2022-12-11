@@ -29,7 +29,7 @@ const messageEl = document.getElementById("message")
 const resetBtnEl = document.getElementById("resetButton")
 // console.log(resetBtnEl)
 const tryAgainEl = document.getElementById("tryAgain")
-console.log(tryAgainEl)
+// console.log(tryAgainEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(tile){
@@ -48,6 +48,7 @@ function init(){
     console.log("New game initiated.")
     console.log(board)
     render()
+    removeTryAgain()
 }
 init()
 
@@ -148,7 +149,11 @@ function tryAgain (){
     } return
 }
 
-
+function removeTryAgain (){
+    let tryA = document.getElementById("tryAgain")
+    let h4 = document.querySelector("h4")
+    tryA.removeChild(h4)
+}
 
 
 
