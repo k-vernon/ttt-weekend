@@ -1,3 +1,9 @@
+
+
+
+
+
+
 body {
     background-color: rgb(194, 211, 211);
 	/* Use a system font, if none are available use an available sans-sarif   font */
@@ -13,7 +19,10 @@ body {
 
 h1 {
   font-size: 50px;
-  padding: 50px -40px;
+  margin-top: 50px;
+  font-family:'Comfortaa', cursive; ;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.173);
+  font-weight: bolder;
 }
 
 h2 {
@@ -22,9 +31,11 @@ h2 {
   position: relative;
   text-align: center;
   margin: 20px auto 0px auto;
-  
+  margin-top: 10px;
   padding: 10px 16px;
   border-radius: 10px;
+  font-family: 'Comfortaa', cursive;;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.173);
   
 }
 
@@ -32,26 +43,27 @@ section.board {
   display: grid;
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
-  grid-gap: 1vmin;
+  grid-gap: 2vmin;
   margin: 20px auto 0px auto;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: auto;
   padding: 10px 10px;
-  
+
 }
 
 div {
-  border: 3px solid rgb(194, 211, 211);
+  /* border: 3px solid rgb(194, 211, 211); */
   background-color: rgb(196, 196, 196);
-  font-size: 8vmin;
+  font-size: 6vmin;
   text-align: center;
-  vertical-align: middle;
   position: relative;
   cursor: pointer;
   border-radius: 10px;
-  
+  font-family: 'Comfortaa', cursive;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.173);
+  padding: 5px 5px;
 }
 
 
@@ -62,6 +74,7 @@ div {
   border-style: none;
   color: #ffffffc6;
   cursor: pointer;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.173);
   font-size: 14px;
   font-weight: 500;
   height: 40px;
@@ -69,6 +82,46 @@ div {
   padding: 10px 16px;
   position: relative;
   text-align: center;
+  font-family: 'Comfortaa', cursive;
+}
+
+
+.puff-in-center {
+	-webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
+ @-webkit-keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 
