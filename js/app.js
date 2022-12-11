@@ -39,11 +39,12 @@ resetBtnEl.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
 function init(){
-    let board = [null, null, null, null, null, null, null, null, null]
-    let turn = 1
-    let winner = false
-    let tie = false
+    board = [null, null, null, null, null, null, null, null, null]
+    turn = 1
+    winner = false
+    tie = false
     console.log("New game initiated.")
+    console.log(board)
     render()
 }
 init()
@@ -77,14 +78,13 @@ function updateMessage(){
    messageEl.textContent = `It's a tie!`
     } else if (winner === true && tie === false && turn === 1) {
    messageEl.textContent = `Player 1 wins!`
-    } else if (winner === true && tie === false && turn === 1) {
+    } else if (winner === true && tie === false && turn === -1) {
         messageEl.textContent = `Player 2 wins!`
     }
 }
 
 
 function handleClick (evt){
-    // const sqIdx = Array.prototype.indexOf.call((evt.target.parentElement).children, evt.target)
     const sqIdx = evt.target.id.slice(2)
     console.log("Square Index Clicked:", sqIdx)
     if(board[sqIdx] !== null){
@@ -111,7 +111,7 @@ function checkForTie (){
    let checkNulls = board.every(function(sqr){
         return sqr === -1 || sqr === 1 
     })
-
+    tie = checkNulls
     console.log("Tie? There are no more moves to make:", checkNulls)  
 } 
   
@@ -122,8 +122,8 @@ function checkForWinner (){
         eachArr.forEach(function(sqr){
             sum = sum + board[sqr]
         })
-        // if(Math.abs(sum) === 3) 
-        if(sum === 3 || sum === -3){
+        // if(sum === 3 || sum === -3){
+        if(Math.abs(sum) === 3) {
             winner = true
         }
         console.log("Winner:", winner)
