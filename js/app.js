@@ -30,6 +30,7 @@ const resetBtnEl = document.getElementById("resetButton")
 // console.log(resetBtnEl)
 const tryAgainEl = document.getElementById("tryAgain")
 // console.log(tryAgainEl)
+let speakerEl = document.getElementById("speaker")
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(tile){
@@ -38,9 +39,20 @@ squareEls.forEach(function(tile){
 
 resetBtnEl.addEventListener("click", init)
 
+speakerEl.addEventListener("click", testSpeaker)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
+function testSpeaker (){
+    if (speakerEl = new Image("./assets/Speaker.png") ){
+        speakerEl = new Image("./assests/SpeakerMute.png")
+        console.log("first img")
+    } else {
+        speakerEl == new Image("./assets/Speaker.png")
+        console.log("second img")
+    }
+}
 
 function playSound (){
     let audio1 = new Audio("./assets/Pop1.mp3")
@@ -53,14 +65,12 @@ function playSound (){
 
 }
 
-
 function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
     console.log("New game initiated.")
-    console.log(board)
     render()
     removeTryAgain()
 }
