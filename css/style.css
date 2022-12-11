@@ -22,8 +22,10 @@ h2 {
   position: relative;
   text-align: center;
   margin: 20px auto 0px auto;
+  
   padding: 10px 16px;
   border-radius: 10px;
+  
 }
 
 section.board {
@@ -37,6 +39,7 @@ section.board {
   margin-right: auto;
   width: auto;
   padding: 10px 10px;
+  
 }
 
 div {
@@ -67,3 +70,10 @@ div {
   position: relative;
   text-align: center;
 }
+
+
+
+
+
+
+

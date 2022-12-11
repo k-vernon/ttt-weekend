@@ -1,12 +1,4 @@
 /*-------------------------------- Constants --------------------------------*/
-
-
-
-/*---------------------------- Variables (state) ----------------------------*/
-let board = [null, null, null, null, null, null, null, null, null]
-let turn = 1
-let winner = false
-let tie = false
 const winningCombos = [
   // Horizonal Combos
   [0, 1, 2], //0            [1, 1, 1, 0, 0, 0, 0, 0, 0]      
@@ -20,6 +12,14 @@ const winningCombos = [
   [0, 4, 8], //6            [1, 0, 0, 0, 1, 0, 0, 0, 1]
   [2, 4, 6], //7            [0, 0, 1, 0, 1, 0, 1, 0, 0]
 ]
+
+
+
+/*---------------------------- Variables (state) ----------------------------*/
+let board = [null, null, null, null, null, null, null, null, null]
+let turn = 1
+let winner = false
+let tie = false
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(".sqr")
@@ -69,12 +69,16 @@ function updateBoard(){
 
 
 function updateMessage(){
-    if (winner === false && tie === false){
-       messageEl.textContent = `It's ${turn}'s turn!`
+    if (winner === false && tie === false && turn === 1){
+       messageEl.textContent = `Player 1's turn!`
+    } else if (winner === false && tie === false && turn === -1){
+        messageEl.textContent = `Player 2's turn!`
     } else if (winner === false && tie === true){
-       messageEl.textContent = `It's a tie!`
-    } else {
-       messageEl.textContent = `The winner is ${turn}!`
+   messageEl.textContent = `It's a tie!`
+    } else if (winner === true && tie === false && turn === 1) {
+   messageEl.textContent = `Player 1 wins!`
+    } else if (winner === true && tie === false && turn === 1) {
+        messageEl.textContent = `Player 2 wins!`
     }
 }
 
@@ -104,9 +108,10 @@ function placePiece (idx){
 
 
 function checkForTie (){
-   let checkNulls = board.every(function(i){
-        return i === -1 || i === 1 
+   let checkNulls = board.every(function(sqr){
+        return sqr === -1 || sqr === 1 
     })
+
     console.log("Tie? There are no more moves to make:", checkNulls)  
 } 
   
