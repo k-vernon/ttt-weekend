@@ -40,6 +40,20 @@ resetBtnEl.addEventListener("click", init)
 
 
 /*-------------------------------- Functions --------------------------------*/
+init()
+
+function playSound (){
+    let audio1 = new Audio("./assets/Pop1.mp3")
+    let audio2 = new Audio("./assets/Pop2.mp3")
+    if (turn === 1){
+        audio1.play()
+    } else {
+        audio2.play()
+    }
+
+}
+
+
 function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
@@ -50,7 +64,6 @@ function init(){
     render()
     removeTryAgain()
 }
-init()
 
 function render(){
     updateBoard()
@@ -70,8 +83,6 @@ function updateBoard(){
     })
 }
 
-
-
 function updateMessage(){
     if (winner === false && tie === false && turn === 1){
        messageEl.textContent = `Player 1's turn!`
@@ -86,7 +97,6 @@ function updateMessage(){
     }
 }
 
-
 function handleClick (evt){
     const sqIdx = evt.target.id.slice(2)
     console.log("Square Index Clicked:", sqIdx)
@@ -98,6 +108,7 @@ function handleClick (evt){
     board[sqIdx] = turn
     console.log("Updated Board:", board)
     placePiece(sqIdx)
+    playSound()
     checkForTie()
     checkForWinner()
     switchPlayerTurn()
@@ -110,7 +121,6 @@ function placePiece (idx){
     console.log("Turn:", turn)
 }
 
-
 function checkForTie (){
    let checkNulls = board.every(function(sqr){
         return sqr === -1 || sqr === 1 
@@ -119,7 +129,6 @@ function checkForTie (){
     console.log("Tie? There are no more moves to make:", checkNulls)  
 } 
   
-
 function checkForWinner (){
     winningCombos.forEach(function(eachArr){
         let sum = 0
