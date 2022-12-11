@@ -28,6 +28,8 @@ const messageEl = document.getElementById("message")
 // console.log(messageEl);
 const resetBtnEl = document.getElementById("resetButton")
 // console.log(resetBtnEl)
+const tryAgainEl = document.getElementById("tryAgain")
+console.log(tryAgainEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(tile){
@@ -98,6 +100,7 @@ function handleClick (evt){
     checkForTie()
     checkForWinner()
     switchPlayerTurn()
+    tryAgain()
     render()
 }
 
@@ -136,6 +139,18 @@ function switchPlayerTurn(){
     }
     turn = turn * -1
 }
+
+function tryAgain (){
+    let h4 = document.createElement("h4")
+    h4.textContent = "Try again?"
+    if (winner === true || tie === true){
+        tryAgainEl.appendChild(h4)
+    } return
+}
+
+
+
+
 
 
 
