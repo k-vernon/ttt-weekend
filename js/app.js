@@ -31,6 +31,7 @@ const resetBtnEl = document.getElementById("resetButton")
 const tryAgainEl = document.getElementById("tryAgain")
 // console.log(tryAgainEl)
 let speakerEl = document.getElementById("speaker")
+console.log(speakerEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(tile){
@@ -45,14 +46,25 @@ speakerEl.addEventListener("click", testSpeaker)
 init()
 
 function testSpeaker (){
-    if (speakerEl = new Image("./assets/Speaker.png") ){
-        speakerEl = new Image("./assests/SpeakerMute.png")
-        console.log("first img")
-    } else {
-        speakerEl == new Image("./assets/Speaker.png")
-        console.log("second img")
+    // let image1 = new Image("./assets/Speaker.png")
+    // // let image2 = new Image("./assets/Speaker1.png")
+    // if (speakerEl.src = image1){
+    //     // speakerEl.src = image2
+    //     console.log("first img")
+    // // } else if (speakerEl.src = image2){
+    // //     speakerEl = image1
+    // //     console.log("second img")
+    // }
+    if (speakerEl.src === "http://127.0.0.1:5500/assets/Speaker.png"){
+        speakerEl.src = "http://127.0.0.1:5500/assets/Speaker1.png"
+        console.log("Mute")
+    } else if (speakerEl.src === "http://127.0.0.1:5500/assets/Speaker1.png"){
+        speakerEl.src = "http://127.0.0.1:5500/assets/Speaker.png"
+        console.log("Unmute")
     }
+
 }
+
 
 function playSound (){
     let audio1 = new Audio("./assets/Pop1.mp3")
