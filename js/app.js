@@ -1,3 +1,5 @@
+
+
 /*-------------------------------- Constants --------------------------------*/
 const winningCombos = [
   // Horizonal Combos
@@ -33,6 +35,8 @@ const tryAgainEl = document.getElementById("tryAgain")
 let speakerEl = document.getElementById("speaker")
 console.log(speakerEl)
 
+
+
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(tile){
     tile.addEventListener("click", handleClick)
@@ -40,21 +44,12 @@ squareEls.forEach(function(tile){
 
 resetBtnEl.addEventListener("click", init)
 
-speakerEl.addEventListener("click", testSpeaker)
+speakerEl.addEventListener("click", toggleSpeaker)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
 
-function testSpeaker (){
-    // let image1 = new Image("./assets/Speaker.png")
-    // // let image2 = new Image("./assets/Speaker1.png")
-    // if (speakerEl.src = image1){
-    //     // speakerEl.src = image2
-    //     console.log("first img")
-    // // } else if (speakerEl.src = image2){
-    // //     speakerEl = image1
-    // //     console.log("second img")
-    // }
+function toggleSpeaker (){
     if (speakerEl.src === "http://127.0.0.1:5500/assets/Speaker.png"){
         speakerEl.src = "http://127.0.0.1:5500/assets/Speaker1.png"
         console.log("Mute")
@@ -62,9 +57,7 @@ function testSpeaker (){
         speakerEl.src = "http://127.0.0.1:5500/assets/Speaker.png"
         console.log("Unmute")
     }
-
 }
-
 
 function playSound (){
     let audio1 = new Audio("./assets/Pop1.mp3")
@@ -74,7 +67,6 @@ function playSound (){
     } else {
         audio2.play()
     }
-
 }
 
 function init(){

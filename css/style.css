@@ -82,7 +82,7 @@ section.board {
   border: 2px solid black;
   border-radius: 50px;
   padding: 5px 5px;
-  margin: 10px 10px;
+  margin: 20px 20px;
   cursor: pointer;
   opacity: 50%;
   position: absolute;
