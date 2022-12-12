@@ -142,11 +142,12 @@ function handleClick(evt){
     console.log("Updated Board:", board)
     placePiece(sqIdx)
     playPieceSound()
-    checkForTie()
     checkForWinner()
     switchPlayerTurn()
+    checkForTie()
     tryAgain()
     render()
+    
 }
 
 function placePiece(idx){
@@ -157,10 +158,11 @@ function placePiece(idx){
 function checkForTie(){
    let checkNulls = board.every(function(sqr){
         return sqr === -1 || sqr === 1 
-    })
+    }) 
     tie = checkNulls
     console.log("Tie? There are no more moves to make:", checkNulls)  
-} 
+}
+
   
 function checkForWinner(){
     winningCombos.forEach(function(eachArr){
