@@ -33,7 +33,7 @@ const resetBtnEl = document.getElementById("resetButton")
 const tryAgainEl = document.getElementById("tryAgain")
 // console.log(tryAgainEl)
 let speakerEl = document.getElementById("speaker")
-console.log(speakerEl)
+// console.log(speakerEl)
 
 
 
@@ -59,13 +59,21 @@ function toggleSpeaker (){
     }
 }
 
-function playSound (){
+function playPieceSound (){
     let audio1 = new Audio("./assets/Pop1.mp3")
     let audio2 = new Audio("./assets/Pop2.mp3")
     if (turn === 1){
         audio1.play()
     } else {
         audio2.play()
+    }
+}
+
+function playWinSound (){
+    let winSound = new Audio("./assets/Win.mp3")
+    if(winner === true){
+        winSound.volume= 0.7
+        winSound.play()
     }
 }
 
@@ -82,6 +90,7 @@ function init(){
 function render(){
     updateBoard()
     updateMessage()
+    playWinSound()
  
 }
 
@@ -122,7 +131,7 @@ function handleClick (evt){
     board[sqIdx] = turn
     console.log("Updated Board:", board)
     placePiece(sqIdx)
-    playSound()
+    playPieceSound()
     checkForTie()
     checkForWinner()
     switchPlayerTurn()
