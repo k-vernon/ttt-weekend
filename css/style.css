@@ -33,7 +33,6 @@ h2 {
   border-radius: 10px;
   font-family: 'Comfortaa', cursive;;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.173);
-  
 }
 /* Grid */
 section.board {
@@ -47,7 +46,7 @@ section.board {
   margin-right: auto;
   width: auto;
   padding: 10px 10px;
-  
+  max-width: 50%;
 }
 /* Squares */
 .sqr {
@@ -61,7 +60,6 @@ section.board {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 /* Reset Button */
 #resetButton{
@@ -79,7 +77,13 @@ section.board {
   position: relative;
   text-align: center;
   font-family: 'Comfortaa', cursive;
-
+  /* min-width: 35px;
+  min-height: 35px;
+  max-width: 35x;
+  max-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 /* Speaker */
 #speaker{
@@ -99,6 +103,10 @@ section.board {
   margin-bottom: 0px;
   font-family: 'Comfortaa', cursive;
   position: relative;
+  /* min-width: 35px;
+  min-height: 35px;
+  max-width: 35x;
+  max-height: 35px; */
 }
 /* Animation */
 .puff-in-center{
