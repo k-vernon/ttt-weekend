@@ -49,7 +49,7 @@ speakerEl.addEventListener("click", toggleSpeaker)
 /*-------------------------------- Functions --------------------------------*/
 init()
 
-function toggleSpeaker (){
+function toggleSpeaker(){
     if (speakerEl.src === "http://127.0.0.1:5500/assets/Speaker.png"){
         speakerEl.src = "http://127.0.0.1:5500/assets/Speaker1.png"
         console.log("Mute")
@@ -59,7 +59,7 @@ function toggleSpeaker (){
     }
 }
 
-function playPieceSound (){
+function playPieceSound(){
     let audio1 = new Audio("./assets/Pop1.mp3")
     let audio2 = new Audio("./assets/Pop2.mp3")
     if (turn === 1){
@@ -69,13 +69,22 @@ function playPieceSound (){
     }
 }
 
-function playWinSound (){
+function playWinSound(){
     let winSound = new Audio("./assets/Win.mp3")
     if(winner === true){
         winSound.volume= 0.7
         winSound.play()
     }
 }
+
+function playTieSound(){
+    let tieSound = new Audio("./assets/Tie.mp3")
+    if(tie === true){
+        tieSound.volume= 0.6
+        tieSound.play()
+    }
+}
+
 
 function init(){
     board = [null, null, null, null, null, null, null, null, null]
@@ -91,6 +100,7 @@ function render(){
     updateBoard()
     updateMessage()
     playWinSound()
+    playTieSound()
  
 }
 
@@ -120,7 +130,7 @@ function updateMessage(){
     }
 }
 
-function handleClick (evt){
+function handleClick(evt){
     const sqIdx = evt.target.id.slice(2)
     console.log("Square Index Clicked:", sqIdx)
     if(board[sqIdx] !== null){
@@ -139,12 +149,12 @@ function handleClick (evt){
     render()
 }
 
-function placePiece (idx){
+function placePiece(idx){
     board[idx] = turn
     console.log("Turn:", turn)
 }
 
-function checkForTie (){
+function checkForTie(){
    let checkNulls = board.every(function(sqr){
         return sqr === -1 || sqr === 1 
     })
@@ -152,7 +162,7 @@ function checkForTie (){
     console.log("Tie? There are no more moves to make:", checkNulls)  
 } 
   
-function checkForWinner (){
+function checkForWinner(){
     winningCombos.forEach(function(eachArr){
         let sum = 0
         eachArr.forEach(function(sqr){
@@ -173,7 +183,7 @@ function switchPlayerTurn(){
     turn = turn * -1
 }
 
-function tryAgain (){
+function tryAgain(){
     let h4 = document.createElement("h4")
     h4.textContent = "Try again?"
     if (winner === true || tie === true){
@@ -181,7 +191,7 @@ function tryAgain (){
     } return
 }
 
-function removeTryAgain (){
+function removeTryAgain(){
     let tryA = document.getElementById("tryAgain")
     let h4 = document.querySelector("h4")
     tryA.removeChild(h4)

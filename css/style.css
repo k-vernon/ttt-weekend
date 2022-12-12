@@ -40,7 +40,6 @@ section.board {
   display: grid;
   grid-template-rows: repeat(3, 7vmax);
   grid-template-columns: repeat(3, 7vmax);
-
   grid-gap: 2vmin;
   margin: 20px auto 0px auto;
   position: relative;
@@ -80,6 +79,7 @@ section.board {
   position: relative;
   text-align: center;
   font-family: 'Comfortaa', cursive;
+
 }
 /* Speaker */
 #speaker{
