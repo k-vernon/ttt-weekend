@@ -108,6 +108,10 @@ section.board {
   max-width: 35x;
   max-height: 35px; */
 }
+/* Mute Speaker */
+#muted {
+  display: none;
+}
 /* Animation */
 .puff-in-center{
 	animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
