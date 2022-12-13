@@ -157,7 +157,7 @@ function placePiece(idx){
 
 function checkForTie(){
    let checkNulls = board.every(function(sqr){
-        return sqr === -1 || sqr === 1 
+        return sqr === -1 || sqr === 1 && winner === false
     }) 
     tie = checkNulls
     console.log("Tie? There are no more moves to make:", checkNulls)  
@@ -173,6 +173,7 @@ function checkForWinner(){
         // if(sum === 3 || sum === -3){
         if(Math.abs(sum) === 3) {
             winner = true
+            tie = false
         }
         console.log("Winner:", winner)
     })
